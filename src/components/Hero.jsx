@@ -110,8 +110,14 @@ export default function Hero({ profile }) {
           {/* Wireframe geometric orbital rings */}
           <WireframeLoops />
 
-          {/* Profile cutout container */}
-          <div className="relative z-10 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 flex items-center justify-center">
+          {/* Profile cutout container with soft bottom blend */}
+          <div
+            className="relative z-10 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 flex items-center justify-center"
+            style={{
+              WebkitMaskImage: 'linear-gradient(to bottom, black 82%, rgba(0, 0, 0, 0.6) 92%, transparent 100%)',
+              maskImage: 'linear-gradient(to bottom, black 82%, rgba(0, 0, 0, 0.6) 92%, transparent 100%)',
+            }}
+          >
             <img
               src="./assets/zidanIndra.png"
               alt="Zidan Indra Nugraha"

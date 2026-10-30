@@ -47,15 +47,15 @@ export default function AdminCMS({ onExit }) {
   const [uploadPath, setUploadPath] = useState('public/assets/');
   const [isUploading, setIsUploading] = useState(false);
 
-  // Check PIN
+  // Check PIN / Password
   const handlePinSubmit = (e) => {
     e.preventDefault();
-    const storedPin = localStorage.getItem('zidan_admin_pin') || '123456';
+    const storedPin = localStorage.getItem('zidan_admin_pin') || '#Zidanindra990';
     if (pin === storedPin) {
       setIsAuthenticated(true);
       setPinError('');
     } else {
-      setPinError('PIN salah! Silakan coba lagi (Default: 123456)');
+      setPinError('Password salah! Silakan coba lagi (Default: #Zidanindra990)');
     }
   };
 
@@ -322,18 +322,18 @@ export default function AdminCMS({ onExit }) {
           </div>
           <h2 className="text-2xl font-bold text-center text-white mb-2">Portfolio Admin CMS</h2>
           <p className="text-xs text-center text-neutral-400 mb-6">
-            Masukkan PIN keamanan untuk mengelola portofolio & file repository.
+            Masukkan password keamanan untuk mengelola portofolio & file repository.
           </p>
 
           <form onSubmit={handlePinSubmit} className="space-y-4">
             <div>
               <input
                 type="password"
-                maxLength={8}
+                maxLength={32}
                 value={pin}
                 onChange={(e) => setPin(e.target.value)}
-                placeholder="PIN (Default: 123456)"
-                className="w-full text-center tracking-widest text-xl px-4 py-3 rounded-xl bg-neutral-900 border border-white/10 text-white focus:outline-none focus:border-amber-500/50"
+                placeholder="Password (Default: #Zidanindra990)"
+                className="w-full text-center tracking-widest text-base sm:text-lg px-4 py-3 rounded-xl bg-neutral-900 border border-white/10 text-white focus:outline-none focus:border-amber-500/50"
                 autoFocus
               />
               {pinError && <p className="text-xs text-rose-400 mt-2 text-center">{pinError}</p>}

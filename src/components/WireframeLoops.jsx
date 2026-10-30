@@ -3,9 +3,15 @@ import { motion } from 'framer-motion';
 
 export default function WireframeLoops() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
-      {/* Outer ambient glow */}
-      <div className="absolute w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-amber-500/20 via-amber-400/10 to-indigo-500/20 blur-3xl" />
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+      {/* Organic radial ambient glow that naturally fades smoothly to 0% opacity */}
+      <div
+        className="absolute -inset-12 sm:-inset-16 md:-inset-24 pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle at 50% 50%, rgba(229, 169, 59, 0.22) 0%, rgba(245, 158, 11, 0.10) 32%, rgba(99, 102, 241, 0.05) 52%, transparent 72%)',
+          filter: 'blur(20px)',
+        }}
+      />
 
       {/* SVG Geometric wireframe loops */}
       <motion.svg

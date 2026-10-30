@@ -1,5 +1,4 @@
 import React from 'react';
-import { Lock } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons.jsx';
 import { useLanguage } from '../context/LanguageContext.jsx';
 
@@ -41,16 +40,6 @@ export default function Footer({ profile }) {
               <GithubIcon className="w-4 h-4" />
             </a>
           )}
-
-          {/* Discreet Admin Link */}
-          <a
-            href="#/admin"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/5 text-neutral-400 hover:text-amber-400 text-xs font-medium hover:border-amber-500/20 transition-all"
-            title="Admin CMS"
-          >
-            <Lock className="w-3 h-3" />
-            <span>Admin</span>
-          </a>
         </div>
       </div>
     </footer>

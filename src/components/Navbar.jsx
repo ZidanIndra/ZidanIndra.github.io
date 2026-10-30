@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Download, Menu, X, Globe } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext.jsx';
+import CvModal from './CvModal.jsx';
 
 export default function Navbar({ cvPath }) {
   const { lang, toggleLang, t } = useLanguage();
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isCvModalOpen, setIsCvModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,13 +53,12 @@ export default function Navbar({ cvPath }) {
         }`}
       >
         {/* Brand */}
-        <a href="#home" className="flex items-center gap-2 group shrink-0">
-          <span className="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center text-black font-bold text-sm shadow-md shadow-amber-500/30 group-hover:scale-105 transition-transform">
-            Z
-          </span>
-          <span className="font-semibold text-neutral-100 tracking-tight text-sm md:text-base hidden sm:inline">
-            Zidan<span className="text-amber-400">.dev</span>
-          </span>
+        <a href="#home" className="flex items-center group shrink-0" aria-label="Zidan Portfolio Home">
+          <img
+            src="./assets/brand image.png"
+            alt="Zidan Indra Brand"
+            className="h-8 md:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-[0_2px_8px_rgba(229,169,59,0.25)]"
+          />
         </a>
 
         {/* Desktop Links (Floating Pill Inner) */}
@@ -93,11 +94,15 @@ export default function Navbar({ cvPath }) {
             <span className="tracking-wide uppercase">{lang === 'id' ? 'ID' : 'EN'}</span>
           </button>
 
-          {/* Download CV Button */}
+          {/* Download CV Button (opens modal preview + direct download) */}
           <a
             href={cvPath || './assets/CV_Zidan_Indra_Nugraha_Fullstack.pdf'}
-            download
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-neutral-950 font-semibold text-xs shadow-md shadow-amber-500/20 transition-all duration-200 active:scale-95"
+            download="CV_Zidan_Indra_Nugraha.pdf"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsCvModalOpen(true);
+            }}
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-neutral-950 font-semibold text-xs shadow-md shadow-amber-500/20 transition-all duration-200 active:scale-95 cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
             <span>{t('nav.downloadCV')}</span>
@@ -143,8 +148,13 @@ export default function Navbar({ cvPath }) {
 
             <a
               href={cvPath || './assets/CV_Zidan_Indra_Nugraha_Fullstack.pdf'}
-              download
-              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-neutral-950 font-semibold text-xs shadow-md"
+              download="CV_Zidan_Indra_Nugraha.pdf"
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileMenuOpen(false);
+                setIsCvModalOpen(true);
+              }}
+              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-neutral-950 font-semibold text-xs shadow-md cursor-pointer"
             >
               <Download className="w-4 h-4" />
               <span>{t('nav.downloadCV')}</span>
@@ -152,6 +162,13 @@ export default function Navbar({ cvPath }) {
           </div>
         </div>
       )}
+
+      {/* CV Preview Modal */}
+      <CvModal
+        isOpen={isCvModalOpen}
+        onClose={() => setIsCvModalOpen(false)}
+        cvUrl={cvPath || './assets/CV_Zidan_Indra_Nugraha_Fullstack.pdf'}
+      />
     </header>
   );
 }
