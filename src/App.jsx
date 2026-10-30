@@ -8,18 +8,34 @@ import Projects from './components/Projects.jsx';
 import Certificates from './components/Certificates.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import AdminCMS from './components/AdminCMS.jsx';
 
 export default function App() {
   const [data, setData] = useState(() => getPortfolioData());
-  const [route, setRoute] = useState(window.location.hash || '#/');
+  const [route, setRoute] = useState(
+    typeof window !== 'undefined' ? window.location.hash || '#/' : '#/'
+  );
 
   useEffect(() => {
     const handleHashChange = () => {
       setRoute(window.location.hash || '#/');
+      // Refresh data in case admin updated it locally
+      setData(getPortfolioData());
     };
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
+
+  if (route.startsWith('#/admin')) {
+    return (
+      <AdminCMS
+        onExit={() => {
+          window.location.hash = '#/';
+          setData(getPortfolioData());
+        }}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#0b0c10] text-neutral-100 flex flex-col font-sans selection:bg-amber-500/30 selection:text-amber-300">
