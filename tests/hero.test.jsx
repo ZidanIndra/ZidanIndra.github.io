@@ -29,7 +29,7 @@ describe('Hero and Navbar components', () => {
 
   it('Navbar renders brand and CV download button with correct href', () => {
     render(<Navbar cvPath={mockProfile.cvPath} />);
-    const cvButton = screen.getByRole('link', { name: /Download CV/i });
+    const cvButton = screen.getByRole('link', { name: /(Download CV|Unduh CV)/i });
     expect(cvButton).toBeDefined();
     expect(cvButton.getAttribute('href')).toBe('./assets/CV_Zidan_Indra_Nugraha_Fullstack.pdf');
   });

@@ -15,6 +15,7 @@ import {
   FileText,
   Briefcase,
   Award,
+  Users,
   Cpu,
   Eye
 } from 'lucide-react';
@@ -276,6 +277,39 @@ export default function AdminCMS({ onExit }) {
     }
   };
 
+  const handleAddActivity = () => {
+    const newAct = {
+      id: `act-${Date.now()}`,
+      title: 'Nama Aktivitas / Kegiatan',
+      issuer: 'Penyelenggara / Komunitas',
+      year: new Date().getFullYear().toString(),
+      image: './assets/iconweb.png',
+      description: 'Keterangan kegiatan organisasi / pengabdian...'
+    };
+    setData((prev) => ({
+      ...prev,
+      activities: [newAct, ...(prev.activities || [])]
+    }));
+  };
+
+  const handleUpdateActivity = (index, field, value) => {
+    setData((prev) => {
+      const updated = [...(prev.activities || [])];
+      updated[index] = { ...updated[index], [field]: value };
+      return { ...prev, activities: updated };
+    });
+  };
+
+  const handleDeleteActivity = (index) => {
+    if (window.confirm('Hapus aktivitas ini?')) {
+      setData((prev) => {
+        const updated = [...(prev.activities || [])];
+        updated.splice(index, 1);
+        return { ...prev, activities: updated };
+      });
+    }
+  };
+
   // Render PIN Gate Screen
   if (!isAuthenticated) {
     return (
@@ -449,7 +483,8 @@ export default function AdminCMS({ onExit }) {
           {[
             { id: 'profile', label: 'Profile & Hero', icon: FileText },
             { id: 'projects', label: `Projects (${data.projects?.length || 0})`, icon: Briefcase },
-            { id: 'certificates', label: `Certificates (${data.certificates?.length || 0})`, icon: Award },
+            { id: 'certificates', label: `Publications (${data.certificates?.length || 0})`, icon: Award },
+            { id: 'activities', label: `Activities (${data.activities?.length || 0})`, icon: Users },
             { id: 'upload', label: 'Upload Asset', icon: Upload },
           ].map((tab) => {
             const Icon = tab.icon;
@@ -636,20 +671,32 @@ export default function AdminCMS({ onExit }) {
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-semibold text-neutral-400 mb-1">Live Demo URL</label>
+                      <label className="block text-[11px] font-semibold text-neutral-400 mb-1">Live / HF URL</label>
                       <input
                         type="text"
-                        value={project.liveUrl}
+                        value={project.liveUrl || ''}
                         onChange={(e) => handleUpdateProject(idx, 'liveUrl', e.target.value)}
+                        placeholder="https://..."
                         className="w-full px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 text-xs text-white"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-semibold text-neutral-400 mb-1">GitHub Repo URL</label>
+                      <label className="block text-[11px] font-semibold text-neutral-400 mb-1">Behance URL (opsional)</label>
                       <input
                         type="text"
-                        value={project.githubUrl}
+                        value={project.behanceUrl || ''}
+                        onChange={(e) => handleUpdateProject(idx, 'behanceUrl', e.target.value)}
+                        placeholder="https://behance.net/..."
+                        className="w-full px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 text-xs text-white"
+                      />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label className="block text-[11px] font-semibold text-neutral-400 mb-1">GitHub Repo URL (opsional)</label>
+                      <input
+                        type="text"
+                        value={project.githubUrl || ''}
                         onChange={(e) => handleUpdateProject(idx, 'githubUrl', e.target.value)}
+                        placeholder="https://github.com/..."
                         className="w-full px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 text-xs text-white"
                       />
                     </div>
@@ -725,6 +772,99 @@ export default function AdminCMS({ onExit }) {
                         value={cert.image}
                         onChange={(e) => handleUpdateCertificate(idx, 'image', e.target.value)}
                         className="w-full px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 text-xs text-white"
+                      />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label className="block text-[11px] font-semibold text-neutral-400 mb-1">Link Publikasi / DOI (opsional)</label>
+                      <input
+                        type="text"
+                        value={cert.link || ''}
+                        onChange={(e) => handleUpdateCertificate(idx, 'link', e.target.value)}
+                        placeholder="https://doi.org/..."
+                        className="w-full px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 text-xs text-white"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Tab: Activities */}
+        {activeTab === 'activities' && (
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-base font-bold text-white">Daftar Aktivitas & Pengabdian</h3>
+              <button
+                type="button"
+                onClick={handleAddActivity}
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-500 text-neutral-950 text-xs font-bold hover:bg-amber-400 transition-colors"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>Tambah Aktivitas</span>
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              {data.activities?.map((item, idx) => (
+                <div key={item.id || idx} className="glass-panel p-5 rounded-2xl border border-white/10 space-y-4">
+                  <div className="flex items-center justify-between border-b border-white/5 pb-3">
+                    <span className="text-xs font-bold text-amber-400">Aktivitas #{idx + 1}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteActivity(idx)}
+                      className="p-1.5 rounded-lg text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
+                      title="Hapus Aktivitas"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-[11px] font-semibold text-neutral-400 mb-1">Nama Kegiatan</label>
+                      <input
+                        type="text"
+                        value={item.title}
+                        onChange={(e) => handleUpdateActivity(idx, 'title', e.target.value)}
+                        className="w-full px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 text-xs text-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-semibold text-neutral-400 mb-1">Penyelenggara / Lembaga</label>
+                      <input
+                        type="text"
+                        value={item.issuer}
+                        onChange={(e) => handleUpdateActivity(idx, 'issuer', e.target.value)}
+                        className="w-full px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 text-xs text-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-semibold text-neutral-400 mb-1">Tahun</label>
+                      <input
+                        type="text"
+                        value={item.year}
+                        onChange={(e) => handleUpdateActivity(idx, 'year', e.target.value)}
+                        className="w-full px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 text-xs text-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-semibold text-neutral-400 mb-1">Path Gambar</label>
+                      <input
+                        type="text"
+                        value={item.image}
+                        onChange={(e) => handleUpdateActivity(idx, 'image', e.target.value)}
+                        className="w-full px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 text-xs text-white"
+                      />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label className="block text-[11px] font-semibold text-neutral-400 mb-1">Deskripsi</label>
+                      <textarea
+                        rows={2}
+                        value={item.description}
+                        onChange={(e) => handleUpdateActivity(idx, 'description', e.target.value)}
+                        className="w-full px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 text-xs text-white resize-none"
                       />
                     </div>
                   </div>

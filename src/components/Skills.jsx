@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Server, BrainCircuit, Terminal, Sparkles } from 'lucide-react';
+import { Code2, Server, BrainCircuit, Terminal } from 'lucide-react';
+import TechIcon from './TechIcon.jsx';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function Skills({ skills }) {
+  const { t, lang } = useLanguage();
   if (!skills) return null;
 
   const categories = Object.keys(skills);
@@ -22,13 +25,17 @@ export default function Skills({ skills }) {
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <span className="text-amber-400 font-semibold text-xs tracking-widest uppercase mb-2">Capabilities</span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Skills & Technologies</h2>
+          <span className="text-amber-400 font-semibold text-xs tracking-widest uppercase mb-2">
+            {t('skills.badge')}
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+            {t('skills.title')}
+          </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-amber-500 to-amber-300 rounded-full mt-3" />
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
           {categories.map((category) => {
             const isActive = activeCategory === category;
             return (
@@ -37,7 +44,7 @@ export default function Skills({ skills }) {
                 onClick={() => setActiveCategory(category)}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   isActive
-                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-neutral-950 shadow-lg shadow-amber-500/20'
+                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-neutral-950 shadow-lg shadow-amber-500/25'
                     : 'glass-card text-neutral-400 hover:text-white hover:border-amber-500/20'
                 }`}
               >
@@ -56,22 +63,37 @@ export default function Skills({ skills }) {
           transition={{ duration: 0.4 }}
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
         >
-          {skills[activeCategory]?.map((skill, idx) => (
-            <div
-              key={idx}
-              className="glass-card p-5 rounded-2xl border border-white/5 hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-1 group"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform" />
-                <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-white/5 text-neutral-400 group-hover:text-amber-300 group-hover:bg-amber-500/10 transition-colors">
-                  {skill.level}
-                </span>
+          {skills[activeCategory]?.map((skill, idx) => {
+            const levelLabel =
+              skill.level === 'Advanced'
+                ? lang === 'id' ? 'Mahir' : 'Advanced'
+                : lang === 'id' ? 'Menengah' : 'Intermediate';
+
+            return (
+              <div
+                key={idx}
+                className="glass-card p-5 rounded-2xl border border-white/5 hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-1 group flex flex-col justify-between"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  {/* Technology Brand Icon */}
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center p-2 group-hover:scale-110 group-hover:border-amber-500/40 group-hover:bg-amber-500/10 transition-all duration-300 shadow-inner">
+                    <TechIcon name={skill.name} className="w-6 h-6" />
+                  </div>
+
+                  {/* Level Badge */}
+                  <span className="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-0.5 rounded-full bg-white/5 text-neutral-400 group-hover:text-amber-300 group-hover:bg-amber-500/10 transition-colors">
+                    {levelLabel}
+                  </span>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-neutral-100 text-sm group-hover:text-amber-400 transition-colors">
+                    {skill.name}
+                  </h4>
+                </div>
               </div>
-              <h4 className="font-semibold text-neutral-100 text-sm group-hover:text-amber-400 transition-colors">
-                {skill.name}
-              </h4>
-            </div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
     </section>

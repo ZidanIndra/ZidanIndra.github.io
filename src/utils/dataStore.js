@@ -20,7 +20,12 @@ export function getPortfolioData() {
       if (stored) {
         const parsed = JSON.parse(stored);
         if (parsed && parsed.profile && parsed.projects) {
-          return parsed;
+          return {
+            ...initialData,
+            ...parsed,
+            activities: parsed.activities || initialData.activities || [],
+            certificates: parsed.certificates || initialData.certificates || [],
+          };
         }
       }
     } catch (e) {

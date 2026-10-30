@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Sparkles } from 'lucide-react';
-import { GithubIcon } from './SocialIcons.jsx';
+import { ExternalLink } from 'lucide-react';
+import { GithubIcon, BehanceIcon } from './SocialIcons.jsx';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
-export default function ProjectCard({ project, onSelect }) {
+export default function ProjectCard({ project }) {
+  const { t } = useLanguage();
   const cardRef = useRef(null);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
@@ -34,6 +36,11 @@ export default function ProjectCard({ project, onSelect }) {
     setRotateY(0);
     setGlarePos((prev) => ({ ...prev, opacity: 0 }));
   };
+
+  const isBehance =
+    Boolean(project.behanceUrl) ||
+    Boolean(project.liveUrl?.includes('behance.net'));
+  const behanceLink = project.behanceUrl || project.liveUrl;
 
   return (
     <motion.div
@@ -100,23 +107,39 @@ export default function ProjectCard({ project, onSelect }) {
 
           {/* Action Links */}
           <div className="flex items-center gap-2 pt-3 border-t border-white/5">
-            {project.liveUrl && (
+            {/* If Behance project */}
+            {isBehance ? (
               <a
-                href={project.liveUrl}
+                href={behanceLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 text-xs font-semibold border border-amber-500/20 hover:border-amber-500/40 transition-all duration-200"
+                className="flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 text-xs font-semibold border border-blue-500/20 hover:border-blue-500/40 transition-all duration-200"
               >
-                <ExternalLink className="w-3.5 h-3.5" />
-                <span>Live Demo</span>
+                <BehanceIcon className="w-3.5 h-3.5 fill-current" />
+                <span>{t('projects.behance')}</span>
               </a>
+            ) : (
+              project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 text-xs font-semibold border border-amber-500/20 hover:border-amber-500/40 transition-all duration-200"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>{t('projects.liveDemo')}</span>
+                </a>
+              )
             )}
+
+            {/* GitHub Repo Button */}
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg glass-card text-neutral-400 hover:text-white hover:border-amber-500/30 transition-all duration-200"
+                title={t('projects.github')}
                 aria-label="GitHub Repository"
               >
                 <GithubIcon className="w-4 h-4" />

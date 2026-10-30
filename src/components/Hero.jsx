@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Sparkles, ArrowRight } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons.jsx';
 import WireframeLoops from './WireframeLoops.jsx';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function Hero({ profile }) {
+  const { t, lang } = useLanguage();
   if (!profile) return null;
 
   return (
@@ -24,7 +26,7 @@ export default function Hero({ profile }) {
           {/* Handwritten script style greeting */}
           <div className="flex items-center gap-2 mb-2">
             <span className="font-script text-2xl md:text-3xl text-amber-400 transform -rotate-2 inline-block">
-              {profile.greeting || "Hello, I'm"}
+              {profile.greeting || t('hero.greeting')}
             </span>
             <span className="text-xl">✨</span>
           </div>
@@ -37,12 +39,12 @@ export default function Hero({ profile }) {
           {/* Subtitle / Role Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs sm:text-sm font-medium mb-6">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>{profile.title}</span>
+            <span>{profile.title || t('hero.title')}</span>
           </div>
 
           {/* Bio paragraph */}
           <p className="text-neutral-300 text-base sm:text-lg leading-relaxed max-w-xl mb-8 font-normal">
-            {profile.bio}
+            {profile.bio || t('hero.bio')}
           </p>
 
           {/* Action Buttons */}
@@ -53,7 +55,7 @@ export default function Hero({ profile }) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-neutral-950 font-semibold text-sm hover:from-amber-400 hover:to-amber-500 shadow-lg shadow-amber-500/25 transition-all duration-200 active:scale-95 group"
             >
-              <span>Portofolio Deck</span>
+              <span>{t('hero.portfolioDeck')}</span>
               <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
 
@@ -61,14 +63,16 @@ export default function Hero({ profile }) {
               href="#projects"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl glass-card text-neutral-200 font-medium text-sm hover:text-amber-300 hover:border-amber-500/30 transition-all duration-200"
             >
-              <span>Explore Works</span>
+              <span>{t('hero.exploreWork')}</span>
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
 
           {/* Social Profiles */}
           <div className="flex items-center gap-3 pt-2 border-t border-white/5 w-full">
-            <span className="text-xs text-neutral-400 uppercase tracking-wider font-semibold">Connect:</span>
+            <span className="text-xs text-neutral-400 uppercase tracking-wider font-semibold">
+              {t('hero.connect')}
+            </span>
             <div className="flex items-center gap-2">
               {profile.linkedin && (
                 <a
@@ -109,29 +113,16 @@ export default function Hero({ profile }) {
           {/* Profile cutout container */}
           <div className="relative z-10 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 flex items-center justify-center">
             <img
-              src={profile.avatarPath || './assets/Orange_Retro_Creative_Portfolio_Presentation__1_-removebg-preview.png'}
-              alt={profile.name}
+              src="./assets/zidanIndra.png"
+              alt="Zidan Indra Nugraha"
               onError={(e) => {
-                if (profile.fallbackAvatarPath && e.target.src !== profile.fallbackAvatarPath) {
-                  e.target.src = profile.fallbackAvatarPath;
+                if (profile.avatarPath && e.target.src !== profile.avatarPath) {
+                  e.target.src = profile.avatarPath;
                 }
               }}
               className="w-full h-full object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.7)] hover:scale-105 transition-transform duration-500"
             />
           </div>
-
-          {/* Floating Micro-badge */}
-          <motion.div
-            animate={{ y: [0, -6, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute bottom-4 left-4 sm:left-8 z-20 glass-panel px-4 py-2.5 rounded-2xl flex items-center gap-3 border border-amber-500/30 shadow-xl"
-          >
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-            <div>
-              <p className="text-[10px] text-neutral-400 uppercase tracking-wider font-semibold">Status</p>
-              <p className="text-xs font-semibold text-neutral-100">Open for Opportunities</p>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

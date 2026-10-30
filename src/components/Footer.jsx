@@ -1,8 +1,11 @@
 import React from 'react';
-import { Lock, Heart } from 'lucide-react';
+import { Lock } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons.jsx';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function Footer({ profile }) {
+  const { t } = useLanguage();
+
   return (
     <footer className="py-12 border-t border-white/5 bg-neutral-950/80 relative z-10">
       <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -11,7 +14,7 @@ export default function Footer({ profile }) {
             Zidan Indra Nugraha
           </p>
           <p className="text-xs text-neutral-400 mt-1">
-            © {new Date().getFullYear()} All rights reserved. Crafted with clean architecture & modern AI.
+            © {new Date().getFullYear()} {t('footer.rights')} {t('footer.builtWith')}
           </p>
         </div>
 

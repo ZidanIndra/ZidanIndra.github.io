@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard.jsx';
-import { Layers } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function Projects({ projects }) {
+  const { t, lang } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   if (!projects) return null;
 
-  const categories = ['All', ...new Set(projects.map((p) => p.category))];
+  const rawCategories = ['All', ...new Set(projects.map((p) => p.category))];
 
   const filteredProjects =
     selectedCategory === 'All'
@@ -20,15 +21,22 @@ export default function Projects({ projects }) {
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-14">
-          <span className="text-amber-400 font-semibold text-xs tracking-widest uppercase mb-2">Portfolio</span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Featured Projects</h2>
+          <span className="text-amber-400 font-semibold text-xs tracking-widest uppercase mb-2">
+            {t('projects.badge')}
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+            {t('projects.title')}
+          </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-amber-500 to-amber-300 rounded-full mt-3" />
         </div>
 
         {/* Filter Pills */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-          {categories.map((category) => {
+          {rawCategories.map((category) => {
             const isActive = selectedCategory === category;
+            const displayLabel =
+              category === 'All' ? t('projects.filterAll') : category;
+
             return (
               <button
                 key={category}
@@ -39,7 +47,7 @@ export default function Projects({ projects }) {
                     : 'glass-card text-neutral-400 hover:text-white hover:border-amber-500/20'
                 }`}
               >
-                {category}
+                {displayLabel}
               </button>
             );
           })}

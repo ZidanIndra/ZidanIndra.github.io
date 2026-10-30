@@ -10,8 +10,8 @@
     "linkedin": "https://www.linkedin.com/in/zidan-indra-nugraha",
     "figmaDeckUrl": "https://shorturl.at/Wz8De",
     "cvPath": "./assets/CV_Zidan_Indra_Nugraha_Fullstack.pdf",
-    "avatarPath": "./assets/Orange_Retro_Creative_Portfolio_Presentation__1_-removebg-preview.png",
-    "fallbackAvatarPath": "./assets/me.jpg"
+    "avatarPath": "./assets/zidanIndra.png",
+    "fallbackAvatarPath": "./assets/zidanIndra.png"
   },
   "about": {
     "summary": "Saya adalah seorang Full-Stack Developer dengan ketertarikan mendalam pada Machine Learning & Artificial Intelligence. Berpengalaman dalam merancang dan mengembangkan aplikasi web yang scalable, responsif, dan interaktif, sekaligus mengimplementasikan model machine learning mutakhir (Computer Vision, NLP dengan IndoBERT, dan simulasi prediktif).",
@@ -70,9 +70,9 @@
       "category": "AI / ML",
       "description": "Sistem klasifikasi sampah cerdas berbasis Deep Learning & Computer Vision terintegrasi dengan web dashboard interaktif untuk pengelolaan limbah ramah lingkungan.",
       "image": "./assets/ecosortAi.png",
-      "tags": ["PyTorch", "Computer Vision", "React", "FastAPI", "Tailwind CSS"],
-      "liveUrl": "https://shorturl.at/Wz8De",
-      "githubUrl": "https://github.com/ZidanIndra",
+      "tags": ["PyTorch", "CNN", "Flask", "Hugging Face"],
+      "liveUrl": "https://huggingface.co/spaces/zidanindraa2/deteksi-sampah",
+      "githubUrl": "https://github.com/ZidanIndra/Flask-Deteksi-Sampah",
       "featured": true
     },
     {
@@ -81,20 +81,20 @@
       "category": "Full-Stack",
       "description": "Platform analitik performa belajar siswa berbasis web dengan algoritma prediktif Machine Learning untuk mendeteksi potensi kelulusan dan rekomendasi bimbingan.",
       "image": "./assets/EduPredict.png",
-      "tags": ["Node.js", "Express", "MongoDB", "React", "Scikit-Learn"],
-      "liveUrl": "https://shorturl.at/Wz8De",
-      "githubUrl": "https://github.com/ZidanIndra",
+      "tags": ["Node.js", "Express", "MongoDB", "React", "Behance"],
+      "behanceUrl": "https://www.behance.net/gallery/214290481/EduPredict",
+      "liveUrl": "https://www.behance.net/gallery/214290481/EduPredict",
       "featured": true
     },
     {
-      "id": "simulasi-tpa-monte-carlo",
-      "title": "Sistem Simulasi Antrean TPA (Monte Carlo)",
-      "category": "AI / ML",
-      "description": "Aplikasi simulasi antrean pengolahan sampah berbasis web pada TPA menggunakan metode probabilistik Monte Carlo untuk optimasi alur truk sampah.",
-      "image": "./assets/DEVELOPMENT OF A WEB-BASED WASTE PROCESSING QUEUE SIMULATION SYSTEM IN TPA USING THE MONTE CARLO METHOD.png",
-      "tags": ["Python", "Monte Carlo", "Simulation", "React", "Data Analytics"],
-      "liveUrl": "https://shorturl.at/Wz8De",
-      "githubUrl": "https://github.com/ZidanIndra",
+      "id": "anvent",
+      "title": "AnVent - Anemia Prevention",
+      "category": "UI/UX & Web",
+      "description": "Platform digital inovatif dan perancangan antarmuka komprehensif untuk pencegahan serta edukasi penanganan anemia di masyarakat.",
+      "image": "./assets/Anvent.png",
+      "tags": ["UI/UX Design", "Figma", "Web Application", "Behance"],
+      "behanceUrl": "https://www.behance.net/gallery/242826853/AnVent-Anemia-Prevention",
+      "liveUrl": "https://www.behance.net/gallery/242826853/AnVent-Anemia-Prevention",
       "featured": true
     },
     {
@@ -103,20 +103,19 @@
       "category": "AI / ML",
       "description": "Implementasi fine-tuning arsitektur Transformer IndoBERT untuk mengklasifikasi artikel berita berbahasa Indonesia dengan akurasi tinggi dan evaluasi mendalam.",
       "image": "./assets/klasifikasi berita Indobert.png",
-      "tags": ["NLP", "IndoBERT", "Hugging Face", "PyTorch", "Streamlit"],
-      "liveUrl": "https://shorturl.at/Wz8De",
-      "githubUrl": "https://github.com/ZidanIndra",
-      "featured": false
+      "tags": ["NLP", "IndoBERT", "Hugging Face", "PyTorch", "Transformers"],
+      "liveUrl": "https://huggingface.co/spaces/zidanindraa2/portal-berita-indobert",
+      "githubUrl": "https://github.com/ZidanIndra/portal-berita-indobert",
+      "featured": true
     },
     {
       "id": "sistem-sma18",
-      "title": "Sistem Informasi Manajemen SMA 18",
+      "title": "Sistem Informasi dan Konseling SMAN 18 Medan",
       "category": "Full-Stack",
-      "description": "Sistem informasi manajemen sekolah terpadu yang memfasilitasi data akademik, presensi siswa dan guru, serta rekapitulasi nilai berbasis web.",
+      "description": "Sistem informasi manajemen sekolah dan layanan bimbingan konseling terpadu yang memfasilitasi data akademik, presensi siswa dan guru, serta rekapitulasi nilai berbasis web.",
       "image": "./assets/sistem sma18.png",
       "tags": ["PHP/Laravel", "MySQL", "Bootstrap", "REST API"],
-      "liveUrl": "https://shorturl.at/Wz8De",
-      "githubUrl": "https://github.com/ZidanIndra",
+      "liveUrl": "https://smanegeri18medan.com",
       "featured": false
     },
     {
@@ -126,43 +125,56 @@
       "description": "Aplikasi web interaktif dengan desain UI/UX dinamis, integrasi database, dan performa responsif lintas perangkat.",
       "image": "./assets/tujuhebat.png",
       "tags": ["React", "Tailwind CSS", "JavaScript", "REST API"],
-      "liveUrl": "https://shorturl.at/Wz8De",
-      "githubUrl": "https://github.com/ZidanIndra",
+      "liveUrl": "https://tujuhebat.id",
       "featured": false
     }
   ],
   "certificates": [
     {
       "id": "jurnal-misi",
-      "title": "Publikasi Ilmiah - Jurnal MISI",
-      "issuer": "Jurnal Manajemen Informatika & Sistem Informasi",
+      "title": "IMPLEMENTASI ALGORITMA CNN DALAM PENGEMBANGAN WEBSITE UNTUK KLASIFIKASI SAMPAH ORGANIK, DAN NON-ORGANIK",
+      "issuer": "Jurnal Manajemen Informatika & Sistem Informasi (MISI)",
       "year": "2024",
+      "link": "https://doi.org/10.36595/misi.v8i1.1355",
       "image": "./assets/jurnal misi.png",
-      "description": "Publikasi artikel ilmiah mengenai pengembangan sistem simulasi dan teknologi informasi terapan."
+      "description": "Publikasi artikel ilmiah terakreditasi mengenai rekayasa sistem klasifikasi sampah organik dan non-organik berbasis Convolutional Neural Network (CNN) pada arsitektur web interaktif."
     },
+    {
+      "id": "jurnal-monte-carlo",
+      "title": "Sistem Simulasi Antrean TPA (Monte Carlo)",
+      "subtitle": "Development of a Web-Based Waste Processing Queue Simulation System in TPA Using The Monte Carlo Method",
+      "issuer": "Jurnal PINTER (Pendidikan Teknik Informatika & Komputer)",
+      "year": "2024",
+      "link": "https://doi.org/10.21009/pinter.9.2.11",
+      "image": "./assets/DEVELOPMENT OF A WEB-BASED WASTE PROCESSING QUEUE SIMULATION SYSTEM IN TPA USING THE MONTE CARLO METHOD.png",
+      "description": "Publikasi penelitian ilmiah tentang pemodelan simulasi antrean pengolahan sampah pada Tempat Pemrosesan Akhir (TPA) menggunakan metode probabilistik Monte Carlo."
+    },
+    {
+      "id": "buku-mathcad",
+      "title": "publikasi buku Mathcad Prime 9.0 (Solusi Perhitungan Teknik Modern)",
+      "issuer": "Penerbit Ganesha Kreasi Semesta & HKI Kemenkumham",
+      "year": "2024",
+      "link": "https://repository.ganeshakreasisemesta.com/publications/588751/mathcad-prime-9-0-solusi-perhitungan-teknik-modern",
+      "image": "./assets/sertifikat buku.png",
+      "description": "Buku referensi komputasi rekayasa dan matematika terapan menggunakan Mathcad Prime 9.0 dengan pencatatan Hak Kekayaan Intelektual resmi."
+    }
+  ],
+  "activities": [
     {
       "id": "devfest-2023",
       "title": "Google DevFest 2023",
       "issuer": "Google Developer Group (GDG)",
       "year": "2023",
       "image": "./assets/devfest 2023.png",
-      "description": "Partisipasi dalam konferensi teknologi tahunan Google yang membahas AI, Cloud, dan Web Ecosystem."
-    },
-    {
-      "id": "sertifikat-buku-hki",
-      "title": "Sertifikat Hak Cipta / HKI Buku",
-      "issuer": "Kementerian Hukum dan HAM RI",
-      "year": "2024",
-      "image": "./assets/sertifikat buku.png",
-      "description": "Surat Pencatatan Ciptaan untuk karya buku bidang komputasi dan teknologi informasi."
+      "description": "Partisipasi dalam konferensi teknologi pengembang tahunan Google yang membahas AI, Cloud Computing, dan ekosistem Web modern."
     },
     {
       "id": "sman-18-pkm",
       "title": "Pengabdian Kepada Masyarakat (PKM) SMAN 18 Medan",
-      "issuer": "Universitas / Dinas Pendidikan",
+      "issuer": "Universitas & Dinas Pendidikan",
       "year": "2023",
       "image": "./assets/sman 18 medan pkm.png",
-      "description": "Pelaksanaan program pelatihan teknologi dan digitalisasi sekolah mitra."
+      "description": "Pelaksanaan program pelatihan teknologi dan digitalisasi sekolah mitra melalui sistem informasi dan bimbingan konseling."
     },
     {
       "id": "pkm-smp-14",
@@ -170,15 +182,7 @@
       "issuer": "Universitas / Mitra Pendidikan",
       "year": "2023",
       "image": "./assets/pkm smp 14 binjai.png",
-      "description": "Program implementasi literasi digital dan pengenalan komputasi untuk siswa."
-    },
-    {
-      "id": "anvent",
-      "title": "Anvent - Innovation & Event Certificate",
-      "issuer": "Anvent Committee",
-      "year": "2023",
-      "image": "./assets/Anvent.png",
-      "description": "Penghargaan dan sertifikasi keikutsertaan dalam inovasi teknologi dan event kreatif."
+      "description": "Program implementasi literasi digital, pengenalan komputasi, dan logika berpikir terstruktur untuk siswa."
     }
   ]
 }

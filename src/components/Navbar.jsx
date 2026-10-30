@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Download, Menu, X, Sparkles } from 'lucide-react';
+import { Download, Menu, X, Globe } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function Navbar({ cvPath }) {
+  const { lang, toggleLang, t } = useLanguage();
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -9,7 +11,7 @@ export default function Navbar({ cvPath }) {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 30);
-      const sections = ['home', 'about', 'skills', 'projects', 'certificates', 'contact'];
+      const sections = ['home', 'about', 'skills', 'projects', 'certificates', 'activities', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -30,45 +32,46 @@ export default function Navbar({ cvPath }) {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Work', href: '#projects' },
-    { name: 'Certificates', href: '#certificates' },
-    { name: 'Contact', href: '#contact' },
+    { name: t('nav.home'), href: '#home', id: 'home' },
+    { name: t('nav.about'), href: '#about', id: 'about' },
+    { name: t('nav.skills'), href: '#skills', id: 'skills' },
+    { name: t('nav.work'), href: '#projects', id: 'projects' },
+    { name: t('nav.certificates'), href: '#certificates', id: 'certificates' },
+    { name: t('nav.activities'), href: '#activities', id: 'activities' },
+    { name: t('nav.contact'), href: '#contact', id: 'contact' },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4 md:pt-6 transition-all duration-300">
       <nav
-        className={`w-full max-w-5xl rounded-full px-5 py-2.5 flex items-center justify-between transition-all duration-300 ${
+        className={`w-full max-w-6xl rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between transition-all duration-300 ${
           isScrolled
             ? 'glass-panel shadow-2xl shadow-black/60 border border-amber-500/20'
-            : 'bg-neutral-900/40 backdrop-blur-md border border-white/10'
+            : 'bg-neutral-900/50 backdrop-blur-md border border-white/10'
         }`}
       >
         {/* Brand */}
-        <a href="#home" className="flex items-center gap-2 group">
+        <a href="#home" className="flex items-center gap-2 group shrink-0">
           <span className="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center text-black font-bold text-sm shadow-md shadow-amber-500/30 group-hover:scale-105 transition-transform">
             Z
           </span>
-          <span className="font-semibold text-neutral-100 tracking-tight text-sm md:text-base">
+          <span className="font-semibold text-neutral-100 tracking-tight text-sm md:text-base hidden sm:inline">
             Zidan<span className="text-amber-400">.dev</span>
           </span>
         </a>
 
         {/* Desktop Links (Floating Pill Inner) */}
-        <div className="hidden md:flex items-center gap-1 bg-neutral-950/40 px-3 py-1 rounded-full border border-white/5">
+        <div className="hidden lg:flex items-center gap-1 bg-neutral-950/40 px-3 py-1 rounded-full border border-white/5">
           {navLinks.map((link) => {
-            const isActive = activeSection === link.href.substring(1);
+            const isActive = activeSection === link.id;
             return (
               <a
-                key={link.name}
+                key={link.id}
                 href={link.href}
                 className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
                   isActive
                     ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30 shadow-sm'
-                    : 'text-neutral-400 hover:text-neutral-200 hover:bg-white/5'
+                    : 'text-neutral-300 hover:text-white hover:bg-white/5'
                 }`}
               >
                 {link.name}
@@ -77,41 +80,76 @@ export default function Navbar({ cvPath }) {
           })}
         </div>
 
-        {/* Right Action: Download CV */}
+        {/* Right Action Cluster: Language Switcher & CV Button */}
         <div className="flex items-center gap-2">
+          {/* Language Toggle Button */}
+          <button
+            onClick={toggleLang}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-amber-500/10 border border-white/10 hover:border-amber-500/30 text-neutral-200 hover:text-amber-300 text-xs font-semibold transition-all duration-200"
+            title={lang === 'id' ? 'Switch to English' : 'Ganti ke Bahasa Indonesia'}
+            aria-label="Toggle language"
+          >
+            <Globe className="w-3.5 h-3.5 text-amber-400" />
+            <span className="tracking-wide uppercase">{lang === 'id' ? 'ID' : 'EN'}</span>
+          </button>
+
+          {/* Download CV Button */}
           <a
             href={cvPath || './assets/CV_Zidan_Indra_Nugraha_Fullstack.pdf'}
             download
-            className="flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 text-neutral-950 hover:from-amber-400 hover:to-amber-300 transition-all duration-200 shadow-md shadow-amber-500/20 hover:shadow-amber-500/40 active:scale-95"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-neutral-950 font-semibold text-xs shadow-md shadow-amber-500/20 transition-all duration-200 active:scale-95"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Download CV</span>
+            <span>{t('nav.downloadCV')}</span>
           </a>
 
-          {/* Mobile hamburger */}
+          {/* Mobile Menu Trigger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-neutral-400 hover:text-white rounded-full hover:bg-white/5 transition-colors"
-            aria-label="Toggle Menu"
+            className="lg:hidden p-2 rounded-full glass-card text-neutral-300 hover:text-white focus:outline-none"
+            aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-16 left-4 right-4 glass-panel rounded-2xl p-4 shadow-2xl border border-white/10 flex flex-col gap-2 animate-in fade-in slide-in-from-top-4 duration-200">
+        <div className="lg:hidden fixed inset-x-4 top-20 glass-panel p-6 rounded-3xl border border-white/10 shadow-2xl z-50 flex flex-col gap-3 animate-in fade-in slide-in-from-top-4 duration-200">
           {navLinks.map((link) => (
             <a
-              key={link.name}
+              key={link.id}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-2.5 text-sm text-neutral-300 hover:text-amber-400 hover:bg-white/5 rounded-xl font-medium transition-colors"
+              className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                activeSection === link.id
+                  ? 'bg-amber-500/20 text-amber-300 font-semibold'
+                  : 'text-neutral-300 hover:bg-white/5 hover:text-white'
+              }`}
             >
               {link.name}
             </a>
           ))}
+
+          <div className="pt-3 border-t border-white/10 flex items-center justify-between gap-3">
+            <button
+              onClick={toggleLang}
+              className="flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-neutral-200"
+            >
+              <Globe className="w-4 h-4 text-amber-400" />
+              <span>Bahasa: <strong className="text-amber-400 uppercase">{lang}</strong></span>
+            </button>
+
+            <a
+              href={cvPath || './assets/CV_Zidan_Indra_Nugraha_Fullstack.pdf'}
+              download
+              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-neutral-950 font-semibold text-xs shadow-md"
+            >
+              <Download className="w-4 h-4" />
+              <span>{t('nav.downloadCV')}</span>
+            </a>
+          </div>
         </div>
       )}
     </header>
