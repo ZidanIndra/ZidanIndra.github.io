@@ -1,0 +1,184 @@
+{
+  "profile": {
+    "name": "Zidan Indra Nugraha",
+    "greeting": "Hello, I'm",
+    "title": "Full-Stack Developer & Machine Learning / AI Enthusiast",
+    "bio": "Building robust end-to-end web architectures and integrating intelligent algorithms to solve real-world problems. Experienced in modern web development, deep learning, NLP, and computer vision.",
+    "location": "Medan, Indonesia",
+    "email": "zidanindra@gmail.com",
+    "github": "https://github.com/ZidanIndra",
+    "linkedin": "https://www.linkedin.com/in/zidan-indra-nugraha",
+    "figmaDeckUrl": "https://shorturl.at/Wz8De",
+    "cvPath": "./assets/CV_Zidan_Indra_Nugraha_Fullstack.pdf",
+    "avatarPath": "./assets/Orange_Retro_Creative_Portfolio_Presentation__1_-removebg-preview.png",
+    "fallbackAvatarPath": "./assets/me.jpg"
+  },
+  "about": {
+    "summary": "Saya adalah seorang Full-Stack Developer dengan ketertarikan mendalam pada Machine Learning & Artificial Intelligence. Berpengalaman dalam merancang dan mengembangkan aplikasi web yang scalable, responsif, dan interaktif, sekaligus mengimplementasikan model machine learning mutakhir (Computer Vision, NLP dengan IndoBERT, dan simulasi prediktif).",
+    "stats": [
+      { "label": "Years Experience", "value": "2+" },
+      { "label": "Completed Projects", "value": "10+" },
+      { "label": "Certifications & Papers", "value": "6+" },
+      { "label": "Client Satisfaction", "value": "100%" }
+    ],
+    "highlights": [
+      "End-to-end full-stack web applications (React, Node.js, Express, MongoDB, PostgreSQL)",
+      "Deep Learning & NLP: fine-tuning IndoBERT untuk klasifikasi teks, YOLO & PyTorch untuk klasifikasi sampah",
+      "Simulasi & Algoritma: Simulasi antrean pemrosesan sampah TPA dengan metode Monte Carlo",
+      "Komitmen tinggi pada Clean Code, UI/UX Glassmorphism modern, dan performa tinggi"
+    ]
+  },
+  "skills": {
+    "Frontend": [
+      { "name": "React.js", "level": "Advanced" },
+      { "name": "Next.js", "level": "Intermediate" },
+      { "name": "Tailwind CSS", "level": "Advanced" },
+      { "name": "JavaScript (ES6+)", "level": "Advanced" },
+      { "name": "HTML5 / CSS3", "level": "Advanced" },
+      { "name": "Framer Motion", "level": "Intermediate" }
+    ],
+    "Backend": [
+      { "name": "Node.js", "level": "Advanced" },
+      { "name": "Express.js", "level": "Advanced" },
+      { "name": "RESTful API", "level": "Advanced" },
+      { "name": "FastAPI / Python", "level": "Intermediate" },
+      { "name": "PostgreSQL", "level": "Intermediate" },
+      { "name": "MongoDB", "level": "Advanced" },
+      { "name": "MySQL", "level": "Advanced" }
+    ],
+    "Machine Learning & AI": [
+      { "name": "PyTorch", "level": "Intermediate" },
+      { "name": "TensorFlow / Keras", "level": "Intermediate" },
+      { "name": "Scikit-Learn", "level": "Advanced" },
+      { "name": "NLP & Transformers (IndoBERT)", "level": "Advanced" },
+      { "name": "Computer Vision (YOLO/CNN)", "level": "Intermediate" },
+      { "name": "Monte Carlo Simulation", "level": "Advanced" }
+    ],
+    "Tools & DevOps": [
+      { "name": "Git & GitHub", "level": "Advanced" },
+      { "name": "Docker", "level": "Intermediate" },
+      { "name": "Postman", "level": "Advanced" },
+      { "name": "Linux / Bash", "level": "Intermediate" },
+      { "name": "Figma", "level": "Intermediate" },
+      { "name": "Vite", "level": "Advanced" }
+    ]
+  },
+  "projects": [
+    {
+      "id": "ecosort-ai",
+      "title": "EcoSort AI",
+      "category": "AI / ML",
+      "description": "Sistem klasifikasi sampah cerdas berbasis Deep Learning & Computer Vision terintegrasi dengan web dashboard interaktif untuk pengelolaan limbah ramah lingkungan.",
+      "image": "./assets/ecosortAi.png",
+      "tags": ["PyTorch", "Computer Vision", "React", "FastAPI", "Tailwind CSS"],
+      "liveUrl": "https://shorturl.at/Wz8De",
+      "githubUrl": "https://github.com/ZidanIndra",
+      "featured": true
+    },
+    {
+      "id": "edupredict",
+      "title": "EduPredict LMS & Analytics",
+      "category": "Full-Stack",
+      "description": "Platform analitik performa belajar siswa berbasis web dengan algoritma prediktif Machine Learning untuk mendeteksi potensi kelulusan dan rekomendasi bimbingan.",
+      "image": "./assets/EduPredict.png",
+      "tags": ["Node.js", "Express", "MongoDB", "React", "Scikit-Learn"],
+      "liveUrl": "https://shorturl.at/Wz8De",
+      "githubUrl": "https://github.com/ZidanIndra",
+      "featured": true
+    },
+    {
+      "id": "simulasi-tpa-monte-carlo",
+      "title": "Sistem Simulasi Antrean TPA (Monte Carlo)",
+      "category": "AI / ML",
+      "description": "Aplikasi simulasi antrean pengolahan sampah berbasis web pada TPA menggunakan metode probabilistik Monte Carlo untuk optimasi alur truk sampah.",
+      "image": "./assets/DEVELOPMENT OF A WEB-BASED WASTE PROCESSING QUEUE SIMULATION SYSTEM IN TPA USING THE MONTE CARLO METHOD.png",
+      "tags": ["Python", "Monte Carlo", "Simulation", "React", "Data Analytics"],
+      "liveUrl": "https://shorturl.at/Wz8De",
+      "githubUrl": "https://github.com/ZidanIndra",
+      "featured": true
+    },
+    {
+      "id": "indobert-news",
+      "title": "Klasifikasi Berita dengan IndoBERT",
+      "category": "AI / ML",
+      "description": "Implementasi fine-tuning arsitektur Transformer IndoBERT untuk mengklasifikasi artikel berita berbahasa Indonesia dengan akurasi tinggi dan evaluasi mendalam.",
+      "image": "./assets/klasifikasi berita Indobert.png",
+      "tags": ["NLP", "IndoBERT", "Hugging Face", "PyTorch", "Streamlit"],
+      "liveUrl": "https://shorturl.at/Wz8De",
+      "githubUrl": "https://github.com/ZidanIndra",
+      "featured": false
+    },
+    {
+      "id": "sistem-sma18",
+      "title": "Sistem Informasi Manajemen SMA 18",
+      "category": "Full-Stack",
+      "description": "Sistem informasi manajemen sekolah terpadu yang memfasilitasi data akademik, presensi siswa dan guru, serta rekapitulasi nilai berbasis web.",
+      "image": "./assets/sistem sma18.png",
+      "tags": ["PHP/Laravel", "MySQL", "Bootstrap", "REST API"],
+      "liveUrl": "https://shorturl.at/Wz8De",
+      "githubUrl": "https://github.com/ZidanIndra",
+      "featured": false
+    },
+    {
+      "id": "tujuhebat",
+      "title": "Tujuh Hebat Web Application",
+      "category": "Web App",
+      "description": "Aplikasi web interaktif dengan desain UI/UX dinamis, integrasi database, dan performa responsif lintas perangkat.",
+      "image": "./assets/tujuhebat.png",
+      "tags": ["React", "Tailwind CSS", "JavaScript", "REST API"],
+      "liveUrl": "https://shorturl.at/Wz8De",
+      "githubUrl": "https://github.com/ZidanIndra",
+      "featured": false
+    }
+  ],
+  "certificates": [
+    {
+      "id": "jurnal-misi",
+      "title": "Publikasi Ilmiah - Jurnal MISI",
+      "issuer": "Jurnal Manajemen Informatika & Sistem Informasi",
+      "year": "2024",
+      "image": "./assets/jurnal misi.png",
+      "description": "Publikasi artikel ilmiah mengenai pengembangan sistem simulasi dan teknologi informasi terapan."
+    },
+    {
+      "id": "devfest-2023",
+      "title": "Google DevFest 2023",
+      "issuer": "Google Developer Group (GDG)",
+      "year": "2023",
+      "image": "./assets/devfest 2023.png",
+      "description": "Partisipasi dalam konferensi teknologi tahunan Google yang membahas AI, Cloud, dan Web Ecosystem."
+    },
+    {
+      "id": "sertifikat-buku-hki",
+      "title": "Sertifikat Hak Cipta / HKI Buku",
+      "issuer": "Kementerian Hukum dan HAM RI",
+      "year": "2024",
+      "image": "./assets/sertifikat buku.png",
+      "description": "Surat Pencatatan Ciptaan untuk karya buku bidang komputasi dan teknologi informasi."
+    },
+    {
+      "id": "sman-18-pkm",
+      "title": "Pengabdian Kepada Masyarakat (PKM) SMAN 18 Medan",
+      "issuer": "Universitas / Dinas Pendidikan",
+      "year": "2023",
+      "image": "./assets/sman 18 medan pkm.png",
+      "description": "Pelaksanaan program pelatihan teknologi dan digitalisasi sekolah mitra."
+    },
+    {
+      "id": "pkm-smp-14",
+      "title": "Pengabdian Kepada Masyarakat (PKM) SMP 14 Binjai",
+      "issuer": "Universitas / Mitra Pendidikan",
+      "year": "2023",
+      "image": "./assets/pkm smp 14 binjai.png",
+      "description": "Program implementasi literasi digital dan pengenalan komputasi untuk siswa."
+    },
+    {
+      "id": "anvent",
+      "title": "Anvent - Innovation & Event Certificate",
+      "issuer": "Anvent Committee",
+      "year": "2023",
+      "image": "./assets/Anvent.png",
+      "description": "Penghargaan dan sertifikasi keikutsertaan dalam inovasi teknologi dan event kreatif."
+    }
+  ]
+}
