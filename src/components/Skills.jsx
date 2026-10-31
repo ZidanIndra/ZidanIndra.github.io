@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Server, BrainCircuit, Terminal } from 'lucide-react';
+import { Code2, Server, BrainCircuit, Terminal, Smartphone } from 'lucide-react';
 import TechIcon from './TechIcon.jsx';
 import { useLanguage } from '../context/LanguageContext.jsx';
 
@@ -15,6 +15,8 @@ export default function Skills({ skills }) {
     switch (category) {
       case 'Frontend': return <Code2 className="w-4 h-4" />;
       case 'Backend': return <Server className="w-4 h-4" />;
+      case 'Mobile Development':
+      case 'Mobile Developer': return <Smartphone className="w-4 h-4" />;
       case 'Machine Learning & AI': return <BrainCircuit className="w-4 h-4" />;
       default: return <Terminal className="w-4 h-4" />;
     }
@@ -49,7 +51,7 @@ export default function Skills({ skills }) {
                 }`}
               >
                 {getCategoryIcon(category)}
-                <span>{category}</span>
+                <span>{t(`skills.categories.${category}`) || category}</span>
               </button>
             );
           })}

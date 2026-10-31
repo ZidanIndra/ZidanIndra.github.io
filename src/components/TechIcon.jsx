@@ -86,6 +86,50 @@ export default function TechIcon({ name, className = 'w-6 h-6' }) {
     );
   }
 
+  // Laravel
+  if (norm.includes('laravel')) {
+    return (
+      <svg className={className} viewBox="0 0 24 24" fill="none">
+        <path d="M12 2.5L20.5 7.5V17L12 22L3.5 17V7.5L12 2.5Z" fill="#FF2D20" fillOpacity="0.15" stroke="#FF2D20" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M7 9.5L12 6.5L17 9.5V15L12 18L7 15V9.5Z" stroke="#FF2D20" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M12 6.5V18M7 9.5L17 15M17 9.5L7 15" stroke="#FF2D20" strokeWidth="1.2" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  // Flutter
+  if (norm.includes('flutter')) {
+    return (
+      <svg className={className} viewBox="0 0 24 24" fill="none">
+        <path d="M14.3 2.5L5.7 11.1l2.8 2.8 11.4-11.4h-5.6z" fill="#02569B" />
+        <path d="M14.3 10.9L9.2 16l5.1 5.1h5.6L14.3 15.5l5.6-5.6h-5.6z" fill="#0175C2" />
+        <path d="M9.2 16l2.8-2.8 3.5 3.5-2.8 2.8L9.2 16z" fill="#29B6F6" />
+      </svg>
+    );
+  }
+
+  // GetX
+  if (norm.includes('getx')) {
+    return (
+      <svg className={className} viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="#8B5CF6" fillOpacity="0.15" stroke="#8B5CF6" strokeWidth="1.5" />
+        <path d="M7 7l4 5-4 5h3l2.5-3.5L15 17h3l-4-5 4-5h-3l-2.5 3.5L10 7H7z" fill="#A78BFA" />
+        <circle cx="17" cy="7" r="2" fill="#06B6D4" />
+      </svg>
+    );
+  }
+
+  // Firebase
+  if (norm.includes('firebase')) {
+    return (
+      <svg className={className} viewBox="0 0 24 24" fill="none">
+        <path d="M4.6 17.8L6.8 3.8a.7.7 0 0 1 1.3-.2l3.4 6.4-6.9 7.8z" fill="#FFA000" />
+        <path d="M12.9 8.2l2.3-4.4a.7.7 0 0 1 1.2 0l4.9 14-8.4-9.6z" fill="#F57C00" />
+        <path d="M3.7 18.5l8.3 4.7a1 1 0 0 0 .9 0l8.3-4.7-6.3-7.2-2.9-5.5a.7.7 0 0 0-1.3 0L3.7 18.5z" fill="#FFCA28" />
+      </svg>
+    );
+  }
+
   // RESTful API
   if (norm.includes('rest') || norm.includes('api')) {
     return (

@@ -22,7 +22,8 @@
       { "label": "Client Satisfaction", "value": "100%" }
     ],
     "highlights": [
-      "End-to-end full-stack web applications (React, Node.js, Express, MongoDB, PostgreSQL)",
+      "End-to-end full-stack web applications (React, Node.js, Express, MongoDB, PostgreSQL, Laravel)",
+      "Mobile App Development: Cross-platform apps dengan Flutter, GetX state management, dan backend Firebase",
       "Deep Learning & NLP: fine-tuning IndoBERT untuk klasifikasi teks, YOLO & PyTorch untuk klasifikasi sampah",
       "Simulasi & Algoritma: Simulasi antrean pemrosesan sampah TPA dengan metode Monte Carlo",
       "Komitmen tinggi pada Clean Code, UI/UX Glassmorphism modern, dan performa tinggi"
@@ -40,11 +41,17 @@
     "Backend": [
       { "name": "Node.js", "level": "Advanced" },
       { "name": "Express.js", "level": "Advanced" },
+      { "name": "Laravel", "level": "Advanced" },
       { "name": "RESTful API", "level": "Advanced" },
       { "name": "FastAPI / Python", "level": "Intermediate" },
       { "name": "PostgreSQL", "level": "Intermediate" },
       { "name": "MongoDB", "level": "Advanced" },
       { "name": "MySQL", "level": "Advanced" }
+    ],
+    "Mobile Development": [
+      { "name": "Flutter", "level": "Advanced" },
+      { "name": "GetX", "level": "Advanced" },
+      { "name": "Firebase", "level": "Advanced" }
     ],
     "Machine Learning & AI": [
       { "name": "PyTorch", "level": "Intermediate" },
@@ -57,7 +64,7 @@
     "Tools & DevOps": [
       { "name": "Git & GitHub", "level": "Advanced" },
       { "name": "Docker", "level": "Intermediate" },
-      { "name": "Postman", "level": "Advanced" },
+      { "name": "Postman", "level": "Intermediate" },
       { "name": "Linux / Bash", "level": "Intermediate" },
       { "name": "Figma", "level": "Intermediate" },
       { "name": "Vite", "level": "Advanced" }

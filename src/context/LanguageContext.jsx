@@ -32,7 +32,8 @@ export const translations = {
       },
       highlightsTitle: "Sorotan Keahlian",
       highlights: [
-        "Aplikasi web full-stack end-to-end (React, Node.js, Express, MongoDB, PostgreSQL)",
+        "Aplikasi web full-stack end-to-end (React, Node.js, Express, MongoDB, PostgreSQL, Laravel)",
+        "Pengembangan Aplikasi Mobile: Aplikasi cross-platform responsif dengan Flutter, GetX state management, dan Firebase",
         "Deep Learning & NLP: fine-tuning IndoBERT klasifikasi teks, PyTorch & CNN untuk klasifikasi sampah",
         "Simulasi & Algoritma: Simulasi antrean pemrosesan sampah TPA dengan metode probabilistik Monte Carlo",
         "Komitmen tinggi pada Clean Code, UI/UX Glassmorphism modern, dan performa tinggi"
@@ -44,6 +45,7 @@ export const translations = {
       categories: {
         "Frontend": "Frontend",
         "Backend": "Backend",
+        "Mobile Development": "Mobile Development",
         "Machine Learning & AI": "Machine Learning & AI",
         "Tools & DevOps": "Tools & DevOps"
       },
@@ -125,7 +127,8 @@ export const translations = {
       },
       highlightsTitle: "Core Competencies",
       highlights: [
-        "End-to-end full-stack web applications (React, Node.js, Express, MongoDB, PostgreSQL)",
+        "End-to-end full-stack web applications (React, Node.js, Express, MongoDB, PostgreSQL, Laravel)",
+        "Mobile App Development: Responsive cross-platform applications with Flutter, GetX state management, and Firebase",
         "Deep Learning & NLP: fine-tuning IndoBERT for text classification, PyTorch & CNN for waste classification",
         "Simulation & Algorithms: Waste processing queue simulation in landfills using Monte Carlo probabilistic method",
         "Strong commitment to Clean Code, modern Glassmorphism UI/UX, and optimal performance"
@@ -137,6 +140,7 @@ export const translations = {
       categories: {
         "Frontend": "Frontend",
         "Backend": "Backend",
+        "Mobile Development": "Mobile Development",
         "Machine Learning & AI": "Machine Learning & AI",
         "Tools & DevOps": "Tools & DevOps"
       },
